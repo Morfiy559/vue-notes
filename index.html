@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <div class="form-control">
+            <input type="text"
+            :placeholder="placeholder"
+            :value="inputValue" 
+            @input="inputChangeHandler"
+            @keypress.enter='addNewNote'>
+        </div>
+        <button class="btn" @click="addNewNote">добавить</button>
+        <ul class="list" v-if='notes.length!==0'>
+            <li class="list-item" v-for="(note, i) in notes">
+               {{i+1}} {{note}}
+                <button class="btn" @click='removeNote'>Удалить</button>
+            </li>
+        </ul>
+        <div v-else>Заметок нет. Добавьте первую</div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
